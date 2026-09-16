@@ -1,0 +1,29 @@
+name: Publish validated Pontoon plural revision
+on:
+  push:
+    branches: [codex/prepare-catchall-mapping]
+    paths: [.github/workflows/prepare-catchall-mapping.yml]
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        with:
+          ref: 277ccb182fc2acd23b78c6667eba79edcc96dfd9
+      - name: Apply verified revision
+        env:
+          PATCH_BASE64: ZGlmZiAtLWdpdCBhL3RyYW5zbGF0ZS9zcmMvdXRpbHMvbWVzc2FnZS9jb3B5TWVzc2FnZUVudHJ5LnRlc3QuanMgYi90cmFuc2xhdGUvc3JjL3V0aWxzL21lc3NhZ2UvY29weU1lc3NhZ2VFbnRyeS50ZXN0LmpzCmluZGV4IDkwMmQ1MTguLmU2OGFjZDYgMTAwNjQ0Ci0tLSBhL3RyYW5zbGF0ZS9zcmMvdXRpbHMvbWVzc2FnZS9jb3B5TWVzc2FnZUVudHJ5LnRlc3QuanMKKysrIGIvdHJhbnNsYXRlL3NyYy91dGlscy9tZXNzYWdlL2NvcHlNZXNzYWdlRW50cnkudGVzdC5qcwpAQCAtMTAsNiArMTAsMjYgQEAgZnVuY3Rpb24gdmFsdWVzKGVudHJ5KSB7CiB9CiAKIGRlc2NyaWJlKCdjb3B5TWVzc2FnZUVudHJ5JywgKCkgPT4geworICBpdC5lYWNoKFsncnUnLCAndWsnLCAncGwnLCAnYmUnLCAnc3psJ10pKAorICAgICdjb3BpZXMgdGhlIHNvdXJjZSBjYXRjaGFsbCBpbnRvIHRoZSAlcyBkZWZhdWx0IGZvcm0nLAorICAgIChjb2RlKSA9PiB7CisgICAgICBjb25zdCByZXN1bHQgPSBjb3B5TWVzc2FnZUVudHJ5KHBhcnNlRW50cnkoJ2ZsdWVudCcsIHBsdXJhbCksIHsgY29kZSB9KTsKKyAgICAgIGV4cGVjdCh2YWx1ZXMocmVzdWx0KSkudG9FcXVhbChbJ09ORScsICcnLCAnT1RIRVInXSk7CisgICAgfSwKKyAgKTsKKworICBpdCgna2VlcHMgbWlzc2luZyBTbG92ZW5pYW4gY2F0ZWdvcmllcyBlbXB0eSB3aGlsZSBjb3B5aW5nIGl0cyBjYXRjaGFsbCcsICgpID0+IHsKKyAgICBjb25zdCByZXN1bHQgPSBjb3B5TWVzc2FnZUVudHJ5KHBhcnNlRW50cnkoJ2ZsdWVudCcsIHBsdXJhbCksIHsKKyAgICAgIGNvZGU6ICdzbCcsCisgICAgfSk7CisgICAgZXhwZWN0KHZhbHVlcyhyZXN1bHQpKS50b0VxdWFsKFsnT05FJywgJycsICcnLCAnT1RIRVInXSk7CisgIH0pOworCisgIGl0KCd1c2VzIGEgZGlmZmVyZW50bHkgbmFtZWQgc291cmNlIGNhdGNoYWxsIHdoZW4gdGhlIHNlbGVjdG9yIGNvbGxhcHNlcycsICgpID0+IHsKKyAgICBjb25zdCBzb3VyY2UgPSBwYXJzZUVudHJ5KCdmbHVlbnQnLCBwbHVyYWwucmVwbGFjZSgnKltvdGhlcl0nLCAnKlttYW55XScpKTsKKyAgICBleHBlY3QodmFsdWVzKGNvcHlNZXNzYWdlRW50cnkoc291cmNlLCB7IGNvZGU6ICd6aCcgfSkpKS50b0VxdWFsKFsnT1RIRVInXSk7CisgIH0pOworCiAgIGl0KCdrZWVwcyBub24tcGx1cmFsIGJyYW5jaGVzIHdoZW4gYSBwbHVyYWwgc2VsZWN0b3IgY29sbGFwc2VzJywgKCkgPT4gewogICAgIGNvbnN0IHNvdXJjZSA9IHBhcnNlRW50cnkoCiAgICAgICAnZmx1ZW50JywKZGlmZiAtLWdpdCBhL3RyYW5zbGF0ZS9zcmMvdXRpbHMvbWVzc2FnZS9jb3B5TWVzc2FnZUVudHJ5LnRzIGIvdHJhbnNsYXRlL3NyYy91dGlscy9tZXNzYWdlL2NvcHlNZXNzYWdlRW50cnkudHMKaW5kZXggMTMzNWVjNy4uMjBlOTZlNyAxMDA2NDQKLS0tIGEvdHJhbnNsYXRlL3NyYy91dGlscy9tZXNzYWdlL2NvcHlNZXNzYWdlRW50cnkudHMKKysrIGIvdHJhbnNsYXRlL3NyYy91dGlscy9tZXNzYWdlL2NvcHlNZXNzYWdlRW50cnkudHMKQEAgLTgwLDcgKzgwLDggQEAgZnVuY3Rpb24gY29weVBhdHRlcm5zKHNvdXJjZTogTWVzc2FnZSwgdGFyZ2V0OiBNZXNzYWdlKTogTWVzc2FnZSB7CiAgICAgICAgICk7CiAgICAgICB9KTsKICAgICAgIGNhbmRpZGF0ZXMgPQotICAgICAgICBleGFjdC5sZW5ndGggfHwgcGx1cmFscy5oYXMoaSkKKyAgICAgICAgZXhhY3QubGVuZ3RoIHx8CisgICAgICAgIChwbHVyYWxzLmhhcyhpKSAmJiBpbmRleCA+PSAwICYmIHR5cGVvZiBrZXkgPT09ICdzdHJpbmcnKQogICAgICAgICAgID8gZXhhY3QKICAgICAgICAgICA6IGNhbmRpZGF0ZXMuZmlsdGVyKCh7IGtleXMgfSkgPT4gdHlwZW9mIGtleXNbaV0gIT09ICdzdHJpbmcnKTsKICAgICB9Cg==
+        run: |
+          set -eu
+          test "$GITHUB_REPOSITORY" = Hanabi9248/pontoon
+          test "$(git ls-remote --heads origin refs/heads/codex/copy-complete-locale-translations | cut -f1)" = 277ccb182fc2acd23b78c6667eba79edcc96dfd9
+          printf '%s' "$PATCH_BASE64" | base64 --decode > /tmp/revision.diff
+          git apply --index /tmp/revision.diff
+          test "$(git write-tree)" = 889b3a28bf26bbb6979502066358da591c212b4b
+          git -c user.name=Hanabi -c user.email=317387557+Hanabi9248@users.noreply.github.com commit -m 'Preserve catchall patterns across plural category names'
+          git push origin HEAD:refs/heads/codex/copy-complete-locale-translations
